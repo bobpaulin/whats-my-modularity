@@ -15,7 +15,7 @@ import com.bobpaulin.modularity.api.OcrService;
 public class OcrServiceImpl implements OcrService {
 	public String getText(byte[] image) {
 		Tesseract instance = Tesseract.getInstance(); // JNA Direct Mapping
-        //instance.setDatapath(new File("src/main/resources/tessdata").getAbsolutePath());
+        instance.setDatapath(new File("/data/tessdata").getAbsolutePath());
         String result = "";
         try 
         {

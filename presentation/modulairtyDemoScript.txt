@@ -1,0 +1,17 @@
+* Modularity Demo Script
+
+* gradle createJavaProject
+	* api-module
+	* detect-module
+	* ocr-module
+	* pos-module
+	* control-module
+* parent build.gradle
+	* allprojects apply plugin eclipse
+	* allprojects apply plugin maven
+	* allprojects apply plguin osgi
+	* allprojects repositories
+* parent settings.gradle
+	* include all modules
+
+
