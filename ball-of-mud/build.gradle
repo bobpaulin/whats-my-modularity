@@ -12,13 +12,8 @@ repositories {
 mainClassName = "com.bobpaulin.modularity.Main"
 
 dependencies {
-    compile('net.sourceforge.tess4j:tess4j:1.5.0')
-	{
-		exclude module: 'jai-imageio-core-standalone'
-		exclude module: 'ghost4j'
-	}
-	compile 'commons-io:commons-io:2.4'
 	compile 'org.apache.tika:tika-bundle:1.9'
+	compile 'org.apache.tika:tika-parsers:1.9'
 	compile 'org.apache.opennlp:opennlp-tools:1.5.3'
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
