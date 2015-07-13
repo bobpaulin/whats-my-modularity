@@ -6,15 +6,11 @@
 	* ocr-module
 	* pos-module
 	* control-module
-* parent build.gradle
-	* allprojects apply plugin eclipse
-	* allprojects apply plugin maven
-	* allprojects apply plguin osgi
-	* allprojects repositories
-	* subprojects apply jar
-	* osgi export !internal
+* parent build.gradle (checked in)
 * parent settings.gradle
 	* include all modules
+* run gradle eclipse
+
 
 
 
