@@ -4,6 +4,9 @@ public class PartOfSpeechTag {
 	private String word;
 	private String partOfSpeechTag;
 	
+	public PartOfSpeechTag() {
+	}
+	
 	public PartOfSpeechTag(String word, String partOfSpeechTag) {
 		this.word = word;
 		this.partOfSpeechTag = partOfSpeechTag;
@@ -15,6 +18,14 @@ public class PartOfSpeechTag {
 	
 	public String getPartOfSpeechTag() {
 		return partOfSpeechTag;
+	}
+	
+	public void setPartOfSpeechTag(String partOfSpeechTag) {
+		this.partOfSpeechTag = partOfSpeechTag;
+	}
+	
+	public void setWord(String word) {
+		this.word = word;
 	}
 	
 	@Override
