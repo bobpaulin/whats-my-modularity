@@ -1,0 +1,48 @@
+
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:2.4.1'
+    }
+}
+allprojects {
+	apply plugin: 'eclipse'
+	apply plugin: 'maven'
+
+	repositories {
+		flatDir {
+			dirs 'libs'
+		}
+		mavenLocal()
+	   	mavenCentral()
+	}	
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'osgi'
+	apply plugin: 'com.bmuschko.docker-remote-api'
+
+	jar {
+                manifest {
+			instruction 'Export-Package', '!*.internal.*, com.bobpaulin.*'
+               }
+        }
+	docker {
+		url = 'http://localhost:2375'
+	}
+	task copyBundle(type: Copy, dependsOn: 'build') {
+		from 'build/libs'
+		into 'files/felix-framework-5.0.1/bundle'
+	}
+	task copyRuntime(type: Copy) {
+		from 'files'
+		into project.file("build/$project.name/files")
+	}
+}

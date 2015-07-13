@@ -11,7 +11,18 @@
 	* allprojects apply plugin maven
 	* allprojects apply plguin osgi
 	* allprojects repositories
+	* subprojects apply jar
+	* osgi export !internal
 * parent settings.gradle
 	* include all modules
 
 
+
+* Docker Build:
+
+/sdks/gradle-2.4/bin/gradle  clean copyBundle buildImage
+
+* Docker Start Commands
+sudo docker run -td --net=host -P bobpaulin/pos-module java -jar bin/felix.jar
+sudo docker run -td --net=host -P bobpaulin/parser-module java -jar bin/felix.jar
+sudo docker run -ti --net=host -P bobpaulin/control-module bash
