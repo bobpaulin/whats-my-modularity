@@ -2,17 +2,39 @@
 
 * gradle createJavaProject
 	* api-module
-	* detect-module
-	* ocr-module
+	* parser-module
 	* pos-module
 	* control-module
-* parent build.gradle (checked in)
 * parent settings.gradle
 	* include all modules
 * run gradle eclipse
+* copy packages
+* copy resources (parser, pos)
+* module add dependencies
+* module create Activator
+	* register services
+	* refactor services to use bundlecontext
+		* pos should pull in bin file
+		* parser should pull in TesseractOCRConfig.properties
+	* create GOGO Shell Command (control)
+* gradle build
+* copy to runtime 
+* start
 
+----END OSGi ----
+----START DOCKER ----
 
+* copy runtimes
+* copy testfiles
+* modules add imports
+* modules add createDockerfile tasks
+* modules add buildImage Tasks
+* modules add remote admin deps
+* modules add export interface to activators
+* gradle buildImages
+* docker start
 
+----END DOCKER ----
 
 * Docker Build:
 
