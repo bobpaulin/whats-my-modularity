@@ -9,16 +9,17 @@
 	* include all modules
 * run gradle eclipse
 * copy packages
-* copy resources (parser, pos)
+* copy resources pos
 * module add dependencies
 * module create Activator
 	* register services
-	* refactor services to use bundlecontext
-		* pos should pull in bin file
-		* parser should pull in TesseractOCRConfig.properties
+	* refactor pos services to use bundlecontext
 	* create GOGO Shell Command (control)
+		* ControlCommand
+		* Gogo Shell Service
 * gradle build
-* copy to runtime 
+* gradle unzipSingleVM
+* gradle copyBundle
 * start
 
 ----END OSGi ----
@@ -31,6 +32,7 @@
 * modules add buildImage Tasks
 * modules add remote admin deps
 * modules add export interface to activators
+* gradle copyRuntime
 * gradle buildImages
 * docker start
 
