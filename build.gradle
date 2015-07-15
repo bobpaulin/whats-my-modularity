@@ -42,7 +42,7 @@ subprojects {
 	docker {
 		url = 'http://localhost:2375'
 	}
-	task copyBundleDocker(type: Copy, dependsOn: 'build') {
+	task copyBundleDocker(type: Copy) {
 		from 'build/libs'
 		into "build/$project.name/files/felix-framework-5.0.1/bundle"
 	}
@@ -61,4 +61,5 @@ subprojects {
 	}
 
 	copyRuntime.enabled = file("../osgiRuntimes/$project.name").exists()
+	copyBundleDocker.dependsOn build, copyRuntime
 }
