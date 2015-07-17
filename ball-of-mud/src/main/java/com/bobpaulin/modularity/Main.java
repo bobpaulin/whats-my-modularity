@@ -36,5 +36,10 @@ public class Main {
 		posTagList.forEach(posTag -> System.out.println(posTag));
 
 	}
+	
+	public static String[] tokenizeSentence(String sentence)
+	{
+		return sentence.split(" ");
+	}
 
 }

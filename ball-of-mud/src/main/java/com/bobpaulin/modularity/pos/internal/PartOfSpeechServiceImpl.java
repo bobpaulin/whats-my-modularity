@@ -9,6 +9,7 @@ import java.util.Properties;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 
+import com.bobpaulin.modularity.Main;
 import com.bobpaulin.modularity.api.PartOfSpeechService;
 import com.bobpaulin.modularity.api.PartOfSpeechTag;
 
@@ -46,7 +47,7 @@ public class PartOfSpeechServiceImpl implements PartOfSpeechService {
 	}
 	public List<PartOfSpeechTag> parseSentence(String sentence) {
 		List<PartOfSpeechTag> result = new ArrayList<PartOfSpeechTag>();
-		String[] sentenceTokens = sentence.split(" ");
+		String[] sentenceTokens = Main.tokenizeSentence(sentence);
 		String[] tags = tagger.tag(sentenceTokens);
 		for(int tokenPosition = 0; tokenPosition < sentenceTokens.length; tokenPosition++)
 		{
