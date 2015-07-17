@@ -21,7 +21,16 @@ public class Main {
 			return;
 		}
 		
-		byte[] fileBytes = Files.readAllBytes(FileSystems.getDefault().getPath(args[0]));
+		String filePath = args[0];
+		
+		List<PartOfSpeechTag> posTagList = processFile(filePath);
+		
+		posTagList.forEach(posTag -> System.out.println(posTag));
+
+	}
+
+	static List<PartOfSpeechTag> processFile(String filePath) throws IOException {
+		byte[] fileBytes = Files.readAllBytes(FileSystems.getDefault().getPath(filePath));
 		
 		MediaParser mediaParser = new MediaParserImpl();
 		
@@ -33,8 +42,7 @@ public class Main {
 		
 		List<PartOfSpeechTag> posTagList = partOfSpeechService.parseSentence(sentence);
 		
-		posTagList.forEach(posTag -> System.out.println(posTag));
-
+		return posTagList;
 	}
 	
 	public static String[] tokenizeSentence(String sentence)
