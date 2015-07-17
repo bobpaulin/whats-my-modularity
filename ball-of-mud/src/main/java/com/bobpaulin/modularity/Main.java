@@ -38,6 +38,8 @@ public class Main {
 		
 		String sentence = mediaParser.parseFile(fileBytes);
 		
+		sentence = sentence.replaceAll("\n", " ");
+		
 		System.out.println("Sentence: " + sentence);
 		
 		List<PartOfSpeechTag> posTagList = partOfSpeechService.parseSentence(sentence);

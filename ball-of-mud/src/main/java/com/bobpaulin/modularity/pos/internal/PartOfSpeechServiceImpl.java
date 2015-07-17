@@ -51,7 +51,7 @@ public class PartOfSpeechServiceImpl implements PartOfSpeechService {
 		String[] tags = tagger.tag(sentenceTokens);
 		for(int tokenPosition = 0; tokenPosition < sentenceTokens.length; tokenPosition++)
 		{
-			result.add(new PartOfSpeechTag(sentenceTokens[tokenPosition], posConverter.getProperty(tags[tokenPosition])));
+			result.add(new PartOfSpeechTag(sentenceTokens[tokenPosition], posConverter.getProperty(tags[tokenPosition],tags[tokenPosition])));
 		}
 		return result;
 	}

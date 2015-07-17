@@ -12,6 +12,11 @@ repositories {
 
 mainClassName = "com.bobpaulin.modularity.Main"
 
+run {
+	/* Need to split the space-delimited value in the exec.args */
+   args System.getProperty("args").split()
+}
+
 dependencies {
 	compile 'org.apache.tika:tika-core:1.9'
 	compile 'org.apache.tika:tika-parsers:1.9'
