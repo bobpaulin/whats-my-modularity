@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
@@ -15,6 +16,8 @@ public class PartOfSpeechServiceImpl implements PartOfSpeechService {
 	
 	private POSTaggerME tagger;
 	
+	private Properties posConverter;
+	
 	public PartOfSpeechServiceImpl()
 	{
 		InputStream modelIn = null;
@@ -23,6 +26,9 @@ public class PartOfSpeechServiceImpl implements PartOfSpeechService {
 		  modelIn = getClass().getResourceAsStream("/en-pos-maxent.bin");
 		  POSModel model = new POSModel(modelIn);
 		  tagger = new POSTaggerME(model);
+		  posConverter = new Properties();
+		  posConverter.load(getClass().getResourceAsStream("/pos-convert.properties"));
+		  
 		}
 		catch (IOException e) {
 		  // Model loading failed, handle the error
@@ -44,7 +50,7 @@ public class PartOfSpeechServiceImpl implements PartOfSpeechService {
 		String[] tags = tagger.tag(sentenceTokens);
 		for(int tokenPosition = 0; tokenPosition < sentenceTokens.length; tokenPosition++)
 		{
-			result.add(new PartOfSpeechTag(sentenceTokens[tokenPosition], tags[tokenPosition]));
+			result.add(new PartOfSpeechTag(sentenceTokens[tokenPosition], posConverter.getProperty(tags[tokenPosition])));
 		}
 		return result;
 	}
