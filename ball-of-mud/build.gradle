@@ -15,7 +15,7 @@ mainClassName = "com.bobpaulin.modularity.Main"
 run {
 	/* Need to split the space-delimited value in the exec.args */
 	if(project.hasProperty("args")){
-		args System.getProperty("args").split()
+		args project.getProperty("args").split()
 	}
    
 }
