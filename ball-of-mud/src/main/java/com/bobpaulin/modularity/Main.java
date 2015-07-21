@@ -34,7 +34,7 @@ public class Main {
 		
 		MediaParser mediaParser = new MediaParserImpl();
 		
-		PartOfSpeechService partOfSpeechService = new PartOfSpeechServiceImpl();
+		PartOfSpeechService posService = new PartOfSpeechServiceImpl();
 		
 		String sentence = mediaParser.parseFile(fileBytes);
 		
@@ -42,7 +42,7 @@ public class Main {
 		
 		System.out.println("Sentence: " + sentence);
 		
-		List<PartOfSpeechTag> posTagList = partOfSpeechService.parseSentence(sentence);
+		List<PartOfSpeechTag> posTagList = posService.parseSentence(sentence);
 		
 		return posTagList;
 	}
