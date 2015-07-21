@@ -70,7 +70,7 @@ subprojects {
 
 	task copyTestFiles(type: Copy) {
 		from "../testfiles"
-		into project.file("build/$project.name/files")
+		into project.file("build/$project.name/files/test")
 	}
 
 	copyRuntime.enabled = file("../osgiRuntimes/$project.name").exists()
