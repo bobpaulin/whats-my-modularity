@@ -1,5 +1,7 @@
 * Modularity Demo Script
 
+* gradle sonarRunner
+* break cyclic dependency
 * gradle createJavaProject
 	* api-module
 	* parser-module
