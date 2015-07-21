@@ -34,6 +34,18 @@ subprojects {
 	apply plugin: 'osgi'
 	apply plugin: 'sonar-runner'
 	apply plugin: 'com.bmuschko.docker-remote-api'
+	
+	eclipse.project {
+		natures 'org.springsource.ide.eclipse.gradle.core.nature'
+	}
+	
+	eclipse.classpath.file {
+		beforeMerged { classpath ->
+			def gradleSupportContainer = new org.gradle.plugins.ide.eclipse.model.Container('org.springsource.ide.eclipse.gradle.classpathcontainer')
+			gradleSupportContainer.exported = true
+			classpath.entries << gradleSupportContainer
+		}
+	}
 
 	jar {
                 manifest {
