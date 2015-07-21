@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+group = 'com.bobpaulin.modularity.control'
+
+jar {
+	manifest {
+		instruction 'Bundle-Activator', 'com.bobpaulin.modularity.control.internal.Activator'
+	}
+}
+
+dependencies {
+	compile 'com.bobpaulin.modularity.api:api-module:1.0.0'
+	compile 'com.bobpaulin.modularity.parser:parser-module:1.0.0'
+	compile 'com.bobpaulin.modularity.pos:pos-module:1.0.0'
+	compile 'org.osgi:org.osgi.core:5.0.0'
+}

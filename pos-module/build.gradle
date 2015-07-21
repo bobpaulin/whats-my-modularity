@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+group = 'com.bobpaulin.modularity.pos'
+
+jar {
+	manifest {
+		instruction 'Bundle-Activator', 'com.bobpaulin.modularity.pos.internal.Activator'
+	}
+}
+
+dependencies {
+	compile 'com.bobpaulin.modularity.api:api-module:1.0.0'
+	compile 'org.apache.opennlp:opennlp-tools:1.5.3'
+	compile 'org.osgi:org.osgi.core:5.0.0'
+}

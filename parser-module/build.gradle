@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+group = 'com.bobpaulin.modularity.parser'
+
+jar {
+	manifest {
+		instruction 'Bundle-Activator', 'com.bobpaulin.modularity.parser.internal.Activator'
+	}
+}
+
+dependencies {
+	compile 'com.bobpaulin.modularity.api:api-module:1.0.0'
+	compile 'org.apache.tika:tika-core:1.9'
+	compile 'org.apache.tika:tika-parsers:1.9'
+	compile 'org.osgi:org.osgi.core:5.0.0'
+}
+

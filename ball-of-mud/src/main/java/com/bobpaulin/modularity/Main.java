@@ -46,10 +46,5 @@ public class Main {
 		
 		return posTagList;
 	}
-	
-	public static String[] tokenizeSentence(String sentence)
-	{
-		return sentence.split(" ");
-	}
 
 }

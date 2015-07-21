@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.bobpaulin.modularity.control.module
+Bundle-Version: 1.0.0
+Bundle-Name: control-module
+Bundle-ManifestVersion: 2
+Bnd-LastModified: 1437441757000
+Private-Package: com.bobpaulin.modularity.control.internal
+Bundle-Activator: com.bobpaulin.modularity.control.internal.Activator
+Import-Package: com.bobpaulin.modularity.api,org.osgi.framework;versio
+ n="[1.7,2)"
+Created-By: 1.8.0_45 (Oracle Corporation)
+Tool: Bnd-2.1.0.20130426-122213
+
