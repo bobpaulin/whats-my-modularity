@@ -1,3 +1,6 @@
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
 apply plugin: 'java'
 
 group = 'com.bobpaulin.modularity.control'
@@ -13,4 +16,20 @@ dependencies {
 	compile 'com.bobpaulin.modularity.parser:parser-module:1.0.0'
 	compile 'com.bobpaulin.modularity.pos:pos-module:1.0.0'
 	compile 'org.osgi:org.osgi.core:5.0.0'
+}
+
+task createDockerfile(type: Dockerfile, overwrite:true) {
+	destFile = project.file("build/$project.name/Dockerfile")
+			from 'java:8u40-b09-jdk'
+			maintainer 'Bob Paulin "bob@bobpaulin.com"'
+			addFile 'files/felix-framework-5.0.1', '/opt/felix-framework-5.0.1'
+			addFile 'files/testDoc.txt', '/opt/testDoc.txt'
+			addFile 'files/testImage.png', '/opt/testImage.png'
+			workingDir '/opt/felix-framework-5.0.1'
+}
+
+task buildImage(type: DockerBuildImage) {
+	dependsOn createDockerfile, copyBundleDocker, copyTestFiles
+	inputDir = createDockerfile.destFile.parentFile
+	tag = "bobpaulin/$project.name"
 }

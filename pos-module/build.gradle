@@ -1,3 +1,6 @@
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
 apply plugin: 'java'
 
 group = 'com.bobpaulin.modularity.pos'
@@ -12,4 +15,20 @@ dependencies {
 	compile 'com.bobpaulin.modularity.api:api-module:1.0.0'
 	compile 'org.apache.opennlp:opennlp-tools:1.5.3'
 	compile 'org.osgi:org.osgi.core:5.0.0'
+	compile name: 'org.eclipse.osgi.services.remoteserviceadmin_1.6.100.201506082151'
+}
+
+task createDockerfile(type: Dockerfile) {
+	destFile = project.file("build/$project.name/Dockerfile")
+			from 'java:8u40-b09-jdk'
+			maintainer 'Bob Paulin "bob@bobpaulin.com"'
+			addFile 'files/felix-framework-5.0.1', '/opt/felix-framework-5.0.1'
+			workingDir '/opt/felix-framework-5.0.1'
+}
+
+
+task buildImage(type: DockerBuildImage) {
+	dependsOn createDockerfile, copyBundleDocker
+	inputDir = createDockerfile.destFile.parentFile
+	tag = "bobpaulin/$project.name"
 }
