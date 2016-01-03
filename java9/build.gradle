@@ -4,7 +4,7 @@ compileJava {
         options.forkOptions.jvmArgs << '-modulesourcepath'
         options.forkOptions.jvmArgs << 'src'
         options.fork = true
-        options.forkOptions.executable = "C:\\Program Files\\Java\\jdk1.9.0\\bin\\javac.exe"
+        options.forkOptions.executable = "/sdks/jdk-9/bin/javac"
 }
 sourceSets {
     main.java.srcDir 'src/module1'
